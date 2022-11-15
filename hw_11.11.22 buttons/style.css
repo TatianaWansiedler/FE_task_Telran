@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main {
+  width: 30%;
+  height: 50%;
+}
+button {
+  width: 100%;
+  padding: 25px 0;
+  font-size: 24px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background-color: rgb(46, 177, 112);
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+button:hover {
+    background-color:rgba(46, 177, 111, 0.715);
+}
+button:active {
+    font-size: 30px;
+}

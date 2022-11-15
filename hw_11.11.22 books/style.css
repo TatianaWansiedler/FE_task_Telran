@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.book {
+    width: 40%;
+    padding: 50px 10px;
+    background-color: aquamarine;
+    border-radius: 8px;
+    margin: 20px;
+    position: relative;
+}
+h1 {
+    text-align: center;
+}
+p {
+    font-size: 36px;
+   
+}
+
+button {
+    padding: 10px;
+    font-size: 18px;
+    background-color:rgba(235, 16, 199, 0.797);
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+}
