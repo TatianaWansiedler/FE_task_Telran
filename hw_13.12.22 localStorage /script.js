@@ -4,6 +4,7 @@ const addForm = document.querySelector('.add-form')
 const productName = document.querySelector('.add-name')
 const productsWrapper = document.querySelector('.products-wrapper')
 const notification = document.querySelector('.notification')
+const notificationText = document.querySelector('.notification-text')
 
 
 // событие сабмит у формы
@@ -14,7 +15,7 @@ const addProduct = e => {
 
     createProducts(id, currProduct)
     addToLocalStorage(id, currProduct)
-    showNotification()
+    showNotification('Продукт добавлен', 'success')
     resetOptions()
 
 }
@@ -35,7 +36,10 @@ const createProducts = (id, name) => {
         `
     // Добавить слушатели события 
     const deleteBtn = element.querySelector('.delete-btn')
-    deleteBtn.addEventListener('click', deleteProduct)
+    deleteBtn.addEventListener('click', () => {
+        showNotification('Продукт удален', 'danger')
+        deleteProduct(id)
+    })
 
     //Добавить в контейнер
     productsWrapper.append(element)
@@ -43,6 +47,7 @@ const createProducts = (id, name) => {
 
 // Отображение при первой загрузке
 function showProducts() {
+    productsWrapper.innerText = ''
     const products = localStorage.getItem('products')
         ? JSON.parse(localStorage.getItem('products'))
         : []
@@ -65,22 +70,30 @@ function addToLocalStorage(id, name) {
 
 
 //уведомление
-const showNotification = (color) => {
+const showNotification = (text, classValue) => {
     notification.style.display = 'block'
+    notification.classList = `notification ${classValue}`
+    notificationText.innerText = `${text}`
     // скрыть через 3 сек 
     setTimeout(() => {
         notification.style.display = 'none'
     }, 2000)
-}
+};
 
 const resetOptions = () => {
     // очистка поля ввода 
     productName.value = ''
 }
 
-const deleteProduct = () => {
-}
+function deleteProduct(id) {
+    console.log(id);
+    const fil = JSON.parse(localStorage.getItem('products')).filter(product => product.id !== id)
+    console.log(fil);
+    console.log(localStorage.setItem('products', JSON.stringify(fil)));
 
+    showProducts()
+
+}
 
 addForm.addEventListener('submit', addProduct);
 
