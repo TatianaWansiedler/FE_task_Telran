@@ -53,14 +53,14 @@ const buttons = document.querySelectorAll('.delete-btn');
 buttons.forEach(button => {
     button.addEventListener('click', () => {
         let idAtr = button.getAttribute('id');
-        let delBook = document.querySelector(`.book-${idAtr}`);
-        delBook.remove();
+        // let delBook = document.querySelector(`.book-${idAtr}`);
+        // delBook.remove();
+        console.log(button.parentElement);
+        button.parentElement.remove();
 
         books = books.filter(book => book.id != idAtr); // меняем исходный массив 
         //let newBooks = books.filter(book => book.id != idAtr); // или сохраняем массив в новую переменную 
         console.log(books); // в консоли отфильтрованный массив 
-        //showBooks(books); //если вызвать функцию происходит дублирование первоначальной и отфильтрованной разметки 
-        //поэтому вызывать здесь функцию showBooks нет смысла
     });
 });
 
